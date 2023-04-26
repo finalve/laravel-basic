@@ -13,15 +13,15 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com" />
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet" />
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
+        <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-white shadow-sm">
+            <div class="container ">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config("app.name", "Laravel") }}
                 </a>
@@ -34,9 +34,6 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
-
-                        <li class="nav-item">   <a class="nav-link" href="{{ route('posts.index') }}">{{ __("Posts") }}</a></li>
-                        <li class="nav-item">   <a class="nav-link" href="{{ route('types.index') }}">{{ __("Types") }}</a></li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
