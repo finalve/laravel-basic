@@ -13,16 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('friendships', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('friend_id');
+        Schema::table('friends', function (Blueprint $table) {
+            //
             $table->enum('status', ['pending', 'accepted', 'rejected'])->default('pending');
-            $table->timestamps();
-        
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('friend_id')->references('id')->on('users')->onDelete('cascade');
-        
             $table->unique(['user_id', 'friend_id']);
         });
     }
@@ -34,6 +27,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('friendships');
+        Schema::table('friends', function (Blueprint $table) {
+            //
+        });
     }
 };

@@ -29,7 +29,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="" class="nav-link d-flex align-items-center">
+                    <a href="{{route('friend.index')}}" class="nav-link d-flex align-items-center">
                         <i class="bi bi-person" style="font-size: 1.25rem;"></i>
                         <strong class="p-2">Friend  </strong> 
                         <span class="badge rounded-pill bg-danger">99+</span>
@@ -207,4 +207,3 @@
     </div>
 
     @endsection
-</div>

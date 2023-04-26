@@ -8,17 +8,6 @@ use Illuminate\Http\Request;
 
 class FriendsController extends Controller
 {
-
-    public function addFriend(User $user)
-    {
-    }
-
-    public function getFriends()
-    {
-        $friends = auth()->user()->friends;
-        return view('friends', compact('friends'));
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -26,7 +15,11 @@ class FriendsController extends Controller
      */
     public function index()
     {
-        //
+
+        // $friendReq = auth()->user()->friends;
+        // return view('subpages/friends',compact('friendReq'));        
+        $friend = Friends::where('friend_id', auth()->user()->id)->wherePivot('status','pending')->get();
+        return dd($friend[0]->user);
     }
 
     /**
