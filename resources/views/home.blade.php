@@ -52,18 +52,52 @@
                 </li>
             </ul>
         </div>
-        <div class="col-md-6 bg-info">content
-            <div class="card">
-              
-                    <div class="card-body">
-                       <label for="" class="form-label">CREATE POST</label>
-                       <textarea class="form-control"></textarea>
-                       <div class="d-flex justify-content-center p-2"><button class="btn btn-primary">POST</button></div>
-                    
+        <div class="col-md-6">
+            <div class="card mb-2">
+                <div class="card-body">
+                    <label for="" class="form-label"
+                        ><strong>CREATE POST</strong></label
+                    >
+                    <textarea
+                        class="form-control"
+                        style="height: 120px"
+                    ></textarea>
+                    <div class="d-grid mt-3">
+                        <button class="btn btn-primary">POST</button>
                     </div>
-                
+                </div>
             </div>
-
+            <div class="card mb-2">
+                <div class="card-body">
+                    <div class="row mb-4">
+                        <div class="col-4">
+                            <div class="row">
+                                <div class="col-2">
+                                    <img
+                                        src=""
+                                        alt=""
+                                        width="50px"
+                                        height="50px"
+                                        style="border-radius: 50%"
+                                    />
+                                </div>
+                                <div class="col text-end">
+                                    <strong>CREATE POST</strong>
+                                    <p style="font-size: 10px">CREATE POST</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col"></div>
+                    </div>
+                    <div>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Commodi consequuntur necessitatibus blanditiis eum
+                        laudantium quo ipsum. Earum commodi saepe architecto,
+                        quaerat, molestias asperiores quod exercitationem quis a
+                        eligendi reiciendis eveniet!
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="col-md-3 bg-success">rightbar</div>
     </div>
