@@ -29,6 +29,7 @@ class HomeController extends Controller
     {
         $loggedInUserId = Auth::id();
         $posts = Posts::latest()->get();
+
         // get list of friend IDs
         $friendIds = Friends::where('user_id', $loggedInUserId)
             ->pluck('friend_id')

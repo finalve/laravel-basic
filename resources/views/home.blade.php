@@ -36,7 +36,7 @@
                 </li>
                 <hr />
                 <li class="nav-item">
-                    <a href="" class="nav-link">
+                    <a href="{{ route('password.edit') }}" class="nav-link">
                         <i class="bi bi-gear"></i>
                         <strong class="p-2">Settings</strong>
                     </a>
@@ -88,17 +88,25 @@
                                             border: 2px solid #46a5ff;
                                         " />
                                 </div>
-                                <div class="col text-end">
-                                    <strong> {{$post->user->name}}</strong>
-                                    <p style="font-size: 10px">
+                                <div class="col" style="margin-left: 1rem;">
+                                    <strong class=""> {{$post->user->name}} </strong>
+                                    <p  style="font-size: 10px">
                                         {{$post->user->created_at}}
+                                       
                                     </p>
                                 </div>
                             </div>
                         </div>
-                        <div class="col text-end">X</div>
+                        <div class="col text-end">
+                            <form method="post" action="{{route('posts.destroy',$post->id)}}">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger">X</button>
+                            </form>
+                        </div>
                     </div>
                     <div>
+                        
                         {{$post->message}}
                     </div>
                 </div>

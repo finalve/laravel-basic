@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <div class="d-flex bg-danger justify-content-center align-items-center min-vh-100">
+    <div class="d-flex justify-content-center align-items-center min-vh-100">
         <div class="">
             <!-- xs responsive -->
             <div class="d-block d-sm-none">
@@ -16,14 +16,14 @@
             <div class="my-5">
                 @auth
                 <div class="d-flex justify-content-center">
-                    <h2 class="d-none d-sm-block" style="font-weight: 700;">Hello {{Auth::user()->name }}</h2>
-                    <h6 class="d-block d-sm-none" style="font-weight: 700;">Hello {{Auth::user()->name }}</h6>
+                    <h2 class="d-none d-sm-block" style="font-weight: 700;"><a href="{{route('home')}}"> Hello {{Auth::user()->name }}</a></h2>
+                    <h6 class="d-block d-sm-none" style="font-weight: 700;"><a href="{{route('home')}}"> Hello {{Auth::user()->name }}</a></h6>
                 </div>
                
                 @else
                 <div class="d-flex justify-content-center">
-                    <h2 class="d-none d-sm-block" style="font-weight: 700;">Please Login for using systems</h2>
-                    <h6 class="d-block d-sm-none" style="font-weight: 700;">Please Login for using systems</h6>
+                    <h2 class="d-none d-sm-block" style="font-weight: 700;">Please <a href="{{route('login')}}"> Login </a> for using systems</h2>
+                    <h6 class="d-block d-sm-none" style="font-weight: 700;">Please <a href="{{route('login')}}"> Login </a> for using systems</h6>
                 </div>
                     
                 @endauth

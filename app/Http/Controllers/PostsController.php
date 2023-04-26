@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Posts;
 use App\Models\type;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PostsController extends Controller
 {
@@ -90,8 +91,14 @@ class PostsController extends Controller
      * @param  \App\Models\Posts  $posts
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Posts $posts)
+    public function destroy( $id)
     {
-        //
+        $post = Posts::find($id);
+     
+        if($post->user_id !== auth()->user()->id)
+        return back();
+        $post->delete();
+      
+        return redirect()->route('home')->with('success', 'Post Delete successfully!');
     }
 }

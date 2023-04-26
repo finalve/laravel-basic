@@ -21,7 +21,7 @@
                 <div class="card-header">{{ __('Change Password') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('password.update') }}">
+                    <form method="POST" id="update" action="{{ route('password.update') }}">
                         @csrf
                         @method('PUT')
                         <div class="form-group row mb-3">
@@ -62,9 +62,13 @@
                         </div>
                         <div class="d-flex justify-content-center    ">
                             <div class="mx-2">
-                                <button type="submit" class="btn btn-primary">
+                                <button form="update" type="submit" class="btn btn-primary">
                                     {{ __('UPDATE') }}
                                 </button>
+                            </div>
+                            <div class="mx-2">
+                                <a href="{{route('home')}}" class="btn btn-secondary"> {{ __('CANCEL') }}</a>
+                                
                             </div>
                         </div>
                     </form>
