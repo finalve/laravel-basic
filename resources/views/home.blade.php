@@ -29,9 +29,10 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="" class="nav-link">
-                        <i class="bi bi-person"></i>
-                        <strong class="p-2">Friend</strong>
+                    <a href="" class="nav-link d-flex align-items-center">
+                        <i class="bi bi-person" style="font-size: 1.25rem;"></i>
+                        <strong class="p-2">Friend  </strong> 
+                        <span class="badge rounded-pill bg-danger">99+</span>
                     </a>
                 </li>
                 <hr />
@@ -76,6 +77,7 @@
                     </form>
                 </div>
             </div>
+            @if($posts)
             @foreach($posts as $post)
             <div class="card mb-3">
                 <div class="card-body">
@@ -112,11 +114,13 @@
                 </div>
             </div>
             @endforeach
+            @endif
         </div>
         <div class="col-md-2">
             <div>
                 <strong>Add Friend</strong>
                 <hr />
+                @if($users)
                 @foreach($users as $user)
                 <div class="row mb-2">
                     <div class="col-2">
@@ -177,11 +181,12 @@
                     </div>
                 </div>
                 @endforeach
+                @endif
             </div>
             <div class="mt-5">
                 <strong>Friend</strong>
                 <hr />
-
+                @if($friendUsers)
                 @foreach($friendUsers as $friend)
                 <div class="row mb-2">
                     <div class="col-2">
@@ -196,6 +201,7 @@
                 </div>
 
                 @endforeach
+                @endif
             </div>
         </div>
     </div>
