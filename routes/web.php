@@ -1,6 +1,7 @@
 <?php
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Auth\ChangePasswordController;
+use App\Http\Controllers\FriendsController;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\TypeController;
 use Illuminate\Support\Facades\Auth;
@@ -26,4 +27,6 @@ Auth::routes();
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/edit', [ChangePasswordController::class, 'edit'])->name('password.edit');
 route::resource('posts',PostsController::class);
-// Route::put('/edit', ChangePasswordController::class,'update')->name('password.update');
+route::resource('friend',FriendsController::class);
+
+Route::put('/edit', [ChangePasswordController::class,'update'])->name('password.update');
