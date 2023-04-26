@@ -11,7 +11,7 @@ class Friends extends Model
     protected $fillable = ['user_id', 'friend_id'];
     public function user()
     {
-        return $this->belongsToMany(User::class,'friends','id','user_id');
+        return $this->belongsToMany(User::class,'friends','id','user_id')->select('name')->withTimestamps();
     }
 }
 

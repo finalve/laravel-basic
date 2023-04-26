@@ -11,7 +11,7 @@
             " />
     </div>
     <div class="col">
-        <span class="py-auto">{{$friend->pivot->user}}</span>
+        <span class="py-auto">{{$friend->user}}</span>
     </div>
 </div>
 
