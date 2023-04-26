@@ -58,7 +58,7 @@
                     <div class="card-body">
                        <label for="" class="form-label">CREATE POST</label>
                        <textarea class="form-control"></textarea>
-                       <div class="justify-content-end"><button class="btn btn-primary">POST</button></div>
+                       <div class="d-flex justify-content-center p-2"><button class="btn btn-primary">POST</button></div>
                     
                     </div>
                 
