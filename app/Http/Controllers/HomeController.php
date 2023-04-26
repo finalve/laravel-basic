@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Posts;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -24,7 +25,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $posts = Posts::all();
-        return view('home');
+       
+        $posts = Posts::latest()->get();
+        return view('home', compact('posts'));
     }
 }
