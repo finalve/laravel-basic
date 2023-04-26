@@ -25,6 +25,5 @@ Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/edit', [ChangePasswordController::class, 'edit'])->name('password.edit');
-Route::resource('posts', PostsController::class);
-Route::resource('types', TypeController::class);
+route::resource('posts',PostsController::class);
 // Route::put('/edit', ChangePasswordController::class,'update')->name('password.update');

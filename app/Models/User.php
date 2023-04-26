@@ -16,10 +16,6 @@ class User extends Authenticatable
     {
         return $this->hasMany(Posts::class);
     }
-    public function types()
-    {
-        return $this->hasMany(Type::class);
-    }
     /**
      * The attributes that are mass assignable.
      *

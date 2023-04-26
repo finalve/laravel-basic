@@ -15,9 +15,7 @@ class PostsController extends Controller
      */
     public function index()
     {
-        $types = type::all();
-
-        return view('pages/createpost', compact('types'));
+        
     }
 
     /**
@@ -28,7 +26,7 @@ class PostsController extends Controller
     public function create()
     {
         //
-        return view('pages/createpost');
+
     }
 
     /**
@@ -41,26 +39,15 @@ class PostsController extends Controller
     {
         //
         $request->validate([
-            'title' => 'required',
-            'description' => 'required',
-            'types' => 'required|array|min:1',
+            'message' => 'required',
         ]);
 
         $post = new Posts;
-        $post->title = $request->input('title');
-        $post->description = $request->input('description');
         $post->user_id = auth()->user()->id;
+        $post->message = $request->input('message');
         $post->save();
       
-        foreach ($request->input('types') as $type_id) {
-            $type = Type::find($type_id);
-            if ($type) {
-                $post->types()->attach($type);
-            }
-        }
-    
-        return dump($request->input('types'));
-        // return redirect()->route('posts.index')->with('success', 'post created successfully!');
+         return redirect()->route('home')->with('success', 'Post created successfully!');
     }
 
     /**
