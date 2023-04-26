@@ -16,8 +16,8 @@
             <div class="my-5">
                 @auth
                 <div class="d-flex justify-content-center">
-                    <h2 class="d-none d-sm-block" style="font-weight: 700;">Hello {{    Auth::user()->name }}</h2>
-                    <h6 class="d-block d-sm-none" style="font-weight: 700;">Hello {{    Auth::user()->name }}</h6>
+                    <h2 class="d-none d-sm-block" style="font-weight: 700;">Hello {{Auth::user()->name }}</h2>
+                    <h6 class="d-block d-sm-none" style="font-weight: 700;">Hello {{Auth::user()->name }}</h6>
                 </div>
                
                 @else
@@ -25,11 +25,7 @@
                     <h2 class="d-none d-sm-block" style="font-weight: 700;">Please Login for using systems</h2>
                     <h6 class="d-block d-sm-none" style="font-weight: 700;">Please Login for using systems</h6>
                 </div>
-                    <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
-
-                    @if (Route::has('register'))
-                        <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
-                    @endif
+                    
                 @endauth
             </div>
         @endif
