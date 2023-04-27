@@ -30,14 +30,18 @@
                                 " />
                         </div>
                         <div class="col">
-                            <span class="">{{$friend->pivot->name}}</span>
-                            <span class="">{{$friend->pivot->created_at}}</span>
+                            <div class="row">
+                                <div class="col-12 text-end"><strong>{{$friend->name}}</strong></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 text-end"> <span class="">{{$friend->pivot->created_at}}</span></div>
+                            </div>
+                           
                         </div>
-                        <div class="col-4">
+                        <div class="col">
                             <form action="{{ route('friend.update', $friend->id) }}" method="post">
                                 @method('PUT')
                                 @csrf
-                           
                                 <button class="btn btn-primary">Accept</button>
                             </form>
                          

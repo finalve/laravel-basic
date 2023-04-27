@@ -100,6 +100,13 @@
                             </div>
                         </div>
                         <div class="col text-end">
+                            <form method="post" action="{{route('posts.update',$post->id)}}">
+                                @csrf
+                                @method('PUT')
+                                <button type="submit" class="btn btn-secondary">EDIT</button>
+                            </form>
+                        </div>
+                        <div class="col text-end">
                             <form method="post" action="{{route('posts.destroy',$post->id)}}">
                                 @csrf
                                 @method('DELETE')

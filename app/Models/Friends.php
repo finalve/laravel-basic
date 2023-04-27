@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Friends extends Model
 {
     use HasFactory;
-    protected $fillable = ['user_id', 'friend_id'];
+    protected $fillable = ['user_id', 'friend_id', 'status'];
     public function user()
     {
         return $this->belongsToMany(User::class,'friends','id','user_id')->select('name')->withTimestamps();

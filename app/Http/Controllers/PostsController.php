@@ -80,9 +80,12 @@ class PostsController extends Controller
      * @param  \App\Models\Posts  $posts
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Posts $posts)
+    public function update(Request $request,$id)
     {
         //
+        $post = Posts::find($id);
+        $post->update(['message'=>'Update Message Successfuly!']);
+        return redirect()->route('home')->with('success', 'Post UPDATE successfully!');
     }
 
     /**

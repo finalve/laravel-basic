@@ -42,9 +42,12 @@ class HomeController extends Controller
             ->get();
 
         // get list of friend users
-        $friendUsers = User::whereIn('id', $friendIds)
-            ->select('id', 'name')
-            ->get();
+   
+        $friendUsers = auth()->user()->getFriends()->get();
+       
+        // $friendUsers = User::whereIn('id', $friendIds)
+        //     ->select('id', 'name')
+        //     ->get();
         return view('home', compact('posts', 'users', 'friendUsers'));
     }
 }

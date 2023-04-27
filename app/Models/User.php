@@ -19,17 +19,27 @@ class User extends Authenticatable
 
     public function friends()
     {
-        return $this->belongsToMany(User::class,'friends')->withPivot('friend_id','status')->withTimestamps();
+        return $this->belongsToMany(User::class,'friends','friend_id','user_id')->withPivot('friend_id','status')->withTimestamps();
+    }
+
+    public function getFriends()
+    {
+        return $this->belongsToMany(User::class,'friends','friend_id','user_id')->where('status','accepted')->select('name','friends.id')->withTimestamps();
     }
 
     public function friendsrequest()
     {
-        return $this->belongsToMany(User::class,'friends','friend_id','user_id')->select('name','friends.id')->withTimestamps();
+        return $this->belongsToMany(User::class,'friends','friend_id','user_id')->where('status','pending')->select('name','friends.id')->withTimestamps();
     }
 
     public function addfriends()
     {
         return $this->belongsToMany(User::class,'friends','user_id','friend_id')->withTimestamps();
+    }
+
+    public function acceptedfriend(){
+        return $this->belongsToMany(User::class, 'friendship','friend_id','user_id',)
+        ->withTimestamps();
     }
     
    

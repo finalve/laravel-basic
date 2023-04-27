@@ -17,9 +17,10 @@ class FriendsController extends Controller
     {
 
         $friendReq = auth()->user()->friendsrequest()->get();
+
         // return view('subpages/friends',compact('friendReq'));        
         // $friendReq = Friends::where('friend_id', auth()->user()->id)->where('status','pending')->get();
-        return view('subpages/friends',compact('friendReq'));        
+        return view('subpages/friends', compact('friendReq'));
     }
 
     /**
@@ -40,17 +41,7 @@ class FriendsController extends Controller
      */
     public function store(Request $user)
     {
-        // $existingFriendship = Friends::where('user_id', auth()->user()->id)
-        //     ->where('friend_id', $user->id)
-        //     ->first();
-      
-        // if ($existingFriendship) {
-        //     return back()->with('error', 'Friendship already exists');
-        // }
-
-        //
         $friend = User::findOrFail($user->id);
-        // $user->friends()->attach([$user->id]);
         auth()->user()->addfriends()->attach([$friend->id]);
 
         return back()->with('success', 'Friend added successfully');
@@ -85,15 +76,17 @@ class FriendsController extends Controller
      * @param  \App\Models\Friends  $friends
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Friends $friends)
+    public function update(Request $request, $id)
     {
         //
-       
-        $friends->update(['status' => 'accepted']);
-        
-        // auth()->user()->addfriends()->attach([$post->id]);
-       
-        dd($friends);
+        $friend = Friends::find($id);
+
+        $friend->update(['status' => 'accepted',]);
+
+        auth()->user()->addfriends()->attach([$friend->user_id,]);
+        $find = Friends::where('user_id', $friend->friend_id)->where('friend_id', $friend->user_id)->firstOrFail();
+        $find->update(['status' => 'accepted',]);
+        return back()->with('success', 'Friend added successfully');
     }
 
     /**
