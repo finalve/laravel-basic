@@ -28,7 +28,7 @@
 </div>
 @if($posts)
 @foreach($posts as $post)
-<div class="card mb-3">
+<div class="card mb-3 ">
     <div class="card-body">
         <div class="row mb-4">
             <div class="col-4">

@@ -53,7 +53,7 @@
         <div class="col">
             @yield('body')
         </div>
-        <div class="col-md-2 d-none d-sm-block">
+        <div class="col-md-2 d-none d-sm-inline-block">
             @yield('rightbar')
         </div>
     </div>
