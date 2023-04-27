@@ -1,4 +1,5 @@
-@extends('layouts.app') @section('content')
+@extends('layouts.sidebar')
+@section('body')
 <div class="container">
     <div class="card">
         <div class="card-body">
@@ -55,3 +56,4 @@
     </div>
 </div>
 @endsection
+
