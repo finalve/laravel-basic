@@ -16,9 +16,9 @@ class FriendsController extends Controller
     public function index()
     {
 
-        // $friendReq = auth()->user()->friends;
+        $friendReq = auth()->user()->friendsrequest()->get();
         // return view('subpages/friends',compact('friendReq'));        
-        $friendReq = Friends::where('friend_id', auth()->user()->id)->where('status','pending')->get();
+        // $friendReq = Friends::where('friend_id', auth()->user()->id)->where('status','pending')->get();
         return view('subpages/friends',compact('friendReq'));        
     }
 
@@ -88,6 +88,12 @@ class FriendsController extends Controller
     public function update(Request $request, Friends $friends)
     {
         //
+       
+        $friends->update(['status' => 'accepted']);
+        
+        // auth()->user()->addfriends()->attach([$post->id]);
+       
+        dd($friends);
     }
 
     /**

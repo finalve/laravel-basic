@@ -22,10 +22,16 @@ class User extends Authenticatable
         return $this->belongsToMany(User::class,'friends')->withPivot('friend_id','status')->withTimestamps();
     }
 
+    public function friendsrequest()
+    {
+        return $this->belongsToMany(User::class,'friends','friend_id','user_id')->select('name','friends.id')->withTimestamps();
+    }
+
     public function addfriends()
     {
         return $this->belongsToMany(User::class,'friends','user_id','friend_id')->withTimestamps();
     }
+    
    
     /**
      * The attributes that are mass assignable.

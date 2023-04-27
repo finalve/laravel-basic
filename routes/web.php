@@ -27,6 +27,8 @@ Auth::routes();
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/edit', [ChangePasswordController::class, 'edit'])->name('password.edit');
 route::resource('posts',PostsController::class);
-route::resource('friend',FriendsController::class);
+Route::resource('friend', FriendsController::class)->parameters([
+    'friend' => 'friends'
+]);
 
 Route::put('/edit', [ChangePasswordController::class,'update'])->name('password.update');
