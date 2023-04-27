@@ -44,10 +44,10 @@ class HomeController extends Controller
         // get list of friend users
    
         $friendUsers = auth()->user()->getFriends()->get();
-       
+        $friendReq = auth()->user()->getPending()->get();
         // $friendUsers = User::whereIn('id', $friendIds)
         //     ->select('id', 'name')
         //     ->get();
-        return view('home', compact('posts', 'users', 'friendUsers'));
+        return view('home', compact('posts', 'users', 'friendUsers','friendReq'));
     }
 }

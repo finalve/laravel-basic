@@ -21,7 +21,6 @@ class PostsController extends Controller
      */
     public function index()
     {
-        
     }
 
     /**
@@ -44,16 +43,25 @@ class PostsController extends Controller
     public function store(Request $request)
     {
         //
+      
         $request->validate([
             'message' => 'required',
+            'img' => 'nullable|file|mimes:jpeg,png,gif,svg|max:2048|dimensions:max_width=5000,max_height=5000',
+
         ]);
 
         $post = new Posts;
         $post->user_id = auth()->user()->id;
         $post->message = $request->input('message');
+        if ($request->hasFile('img')) {
+            $file= $request->file('img');
+            $filename= date('YmdHi').$file->getClientOriginalName();
+            $file-> move(public_path('public/Image'), $filename);
+            $post->img = $filename;
+        }
         $post->save();
-      
-         return redirect()->route('home')->with('success', 'Post created successfully!');
+
+        return redirect()->route('home')->with('success', 'Post created successfully!');
     }
 
     /**
@@ -85,11 +93,11 @@ class PostsController extends Controller
      * @param  \App\Models\Posts  $posts
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,$id)
+    public function update(Request $request, $id)
     {
         //
         $post = Posts::find($id);
-        $post->update(['message'=>'Update Message Successfuly!']);
+        $post->update(['message' => 'Update Message Successfuly!']);
         return redirect()->route('home')->with('success', 'Post UPDATE successfully!');
     }
 
@@ -102,11 +110,11 @@ class PostsController extends Controller
     public function destroy($id)
     {
         $post = Posts::find($id);
-     
-        if($post->user_id !== auth()->user()->id)
-        return back();
+
+        if ($post->user_id !== auth()->user()->id)
+            return back();
         $post->delete();
-      
+
         return redirect()->route('home')->with('success', 'Post Delete successfully!');
     }
 }

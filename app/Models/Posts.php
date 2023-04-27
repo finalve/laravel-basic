@@ -15,6 +15,7 @@ class Posts extends Model
 
     protected $fillable = [
         'message',
+        'img'
     ];
 
 }

@@ -195,6 +195,9 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        // plugin composer require intervention/image
+        Intervention\Image\ImageServiceProvider::class,
+
     ],
 
     /*
@@ -210,6 +213,8 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         // 'ExampleClass' => App\Example\ExampleClass::class,
+         // plugin composer require intervention/image
+        'Image' => Intervention\Image\Facades\Image::class,
     ])->toArray(),
 
 ];

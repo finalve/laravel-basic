@@ -27,6 +27,11 @@ class User extends Authenticatable
         return $this->belongsToMany(User::class,'friends','friend_id','user_id')->where('status','accepted')->select('name','friends.id')->withTimestamps();
     }
 
+    public function getPending()
+    {
+        return $this->belongsToMany(User::class,'friends','user_id','friend_id')->where('status','pending')->select('name','friends.id')->withTimestamps();
+    }
+
     public function friendsrequest()
     {
         return $this->belongsToMany(User::class,'friends','friend_id','user_id')->where('status','pending')->select('name','friends.id')->withTimestamps();
