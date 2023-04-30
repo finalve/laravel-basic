@@ -8,7 +8,7 @@ use App\Models\ProfileUpload;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class ProfileUploadController extends Controller
+class BrannersController extends Controller
 {
     public function __construct()
     {
@@ -21,13 +21,8 @@ class ProfileUploadController extends Controller
      */
     public function index()
     {
-        //
-        $loggedInUserId = Auth::id();
-        $name = auth()->user()->name;
-        $posts = Posts::Where('user_id', $loggedInUserId)->latest()->get();
-        $profile = ProfileUpload::Where('user_id',$loggedInUserId)->latest()->first();
-        $branner = Branners::Where('user_id',$loggedInUserId)->latest()->first();
-        return view('subpages.profile',compact('posts','name','profile','branner'));
+       //
+    
     }
 
     /**
@@ -54,25 +49,25 @@ class ProfileUploadController extends Controller
             'img' => 'required|image|mimes:jpeg,png,gif,svg|max:2048|dimensions:max_width=5000,max_height=5000',
 
         ]);
-        $profile = new ProfileUpload;
+        $profile = new Branners;
         $profile->user_id = auth()->user()->id;
         $profile->message = $request->input('message');
         
         $file= $request->file('img');
         $filename= auth()->user()->id."-".date('YmdHi').'.'.$file->getClientOriginalExtension();
-        $file-> storeAs("public/image/profile/".auth()->user()->name, $filename);
+        $file-> storeAs("public/image/branner/".auth()->user()->name, $filename);
         $profile->img = $filename;
         $profile->save();
-        return back()->with('success', 'Upload Profile successfully');
+        return back()->with('success', 'Upload Branner successfully');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\ProfileUpload  $profileUpload
+     * @param  \App\Models\Branners  $branners
      * @return \Illuminate\Http\Response
      */
-    public function show(ProfileUpload $profileUpload)
+    public function show(Branners $branners)
     {
         //
     }
@@ -80,10 +75,10 @@ class ProfileUploadController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\ProfileUpload  $profileUpload
+     * @param  \App\Models\Branners  $branners
      * @return \Illuminate\Http\Response
      */
-    public function edit(ProfileUpload $profileUpload)
+    public function edit(Branners $branners)
     {
         //
     }
@@ -92,10 +87,10 @@ class ProfileUploadController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\ProfileUpload  $profileUpload
+     * @param  \App\Models\Branners  $branners
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ProfileUpload $profileUpload)
+    public function update(Request $request, Branners $branners)
     {
         //
     }
@@ -103,10 +98,10 @@ class ProfileUploadController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\ProfileUpload  $profileUpload
+     * @param  \App\Models\Branners  $branners
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ProfileUpload $profileUpload)
+    public function destroy(Branners $branners)
     {
         //
     }

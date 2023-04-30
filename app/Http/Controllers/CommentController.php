@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Comments;
+use App\Models\Comment;
+use App\Models\Posts;
+use App\Models\User;
 use Illuminate\Http\Request;
 
-class CommentsController extends Controller
+class CommentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -35,16 +37,26 @@ class CommentsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $pid = Posts::find($request->input('pid'));
+        $request->validate([
+            'pid' => 'required',
+            'comment' => 'required'
+        ]);
+        $comment = new Comment;
+        $comment->uid = auth()->user()->id;
+        $comment->pid = $pid->id;
+        $comment->comment =  $request->input('comment');
+        $comment->save();
+        return back();
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Comments  $comments
+     * @param  \App\Models\Comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function show(Comments $comments)
+    public function show(Comment $comment)
     {
         //
     }
@@ -52,10 +64,10 @@ class CommentsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Comments  $comments
+     * @param  \App\Models\Comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function edit(Comments $comments)
+    public function edit(Comment $comment)
     {
         //
     }
@@ -64,10 +76,10 @@ class CommentsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Comments  $comments
+     * @param  \App\Models\Comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Comments $comments)
+    public function update(Request $request, Comment $comment)
     {
         //
     }
@@ -75,10 +87,10 @@ class CommentsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Comments  $comments
+     * @param  \App\Models\Comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Comments $comments)
+    public function destroy(Comment $comment)
     {
         //
     }

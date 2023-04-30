@@ -62,11 +62,49 @@
             <strong>COMMENTS</strong>
             <hr>
         </div>
-       
+       <form action="{{route('comment.store')}}" method="post" >
+       @csrf
         <div class="input-group mb-3">
-            <input class="form-control" type="text"/> 
-            <button class="btn btn-outline-secondary">comment </button>
+            <input class="form-control" type="text" name="comment"/> 
+            <input hidden class="form-control" type="text" name="pid" value="{{$post->id}}"/>
+            <button type="submit" class="btn btn-outline-secondary">comment </button>
         </div>
+    </form>
+    <div>
+    
+      @foreach($post->comments as $comment)
+      <div class="p-2">
+
+    <div class="card" style="border-radius: 20px;">
+        <div class="card-title">
+            <div class="row p-2">
+                <div class="col-1">
+                    <img src="" alt="" width="50px" height="50px" style="
+                            border-radius: 50%;
+                            border: 2px solid #46a5ff;
+                        " />
+                </div>
+                <div class="col-md" style="margin-left: 1rem;">
+                    <strong class=""> {{$comment->user->name}} </strong>
+                    <p style="font-size: 10px">
+                        {{$comment->created_at}}
+
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            
+            {{$comment->comment}}
+        </div>
+        </div>
+    </div>
+           
+      
+     
+     
+      @endforeach
+    </div>
     </div>
 </div>
 @endforeach

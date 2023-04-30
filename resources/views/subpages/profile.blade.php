@@ -4,8 +4,14 @@
     <!-- Logo Banner -->
     <div style="height: 400px;">
         <a href="" data-bs-toggle="modal" data-bs-target="#uploadBanner">
-            <img src="http://localhost:8000/public/Image/202304290804V_logo.png" alt="" width="100%" height="100%"
+            @if($branner !== null)
+            <img src="{{ asset('storage/Image/branner/'.$name.'/'.$branner->img) }}" alt="" width="100%" height="100%"
                 style="margin-top: -25px;">
+              
+                @else
+                <img src="" alt="" width="100%" height="100%"
+                style="margin-top: -25px;">
+                @endif
         </a>
     </div>
     <!-- Modal -->
@@ -36,11 +42,16 @@
                         Would you like Upload Your Banner ?
                     </p>
                 </div>
-                <form id="friend-form" action="{{ route('friend.store') }}" method="POST">
+                <form id="branner-form" action="{{ route('branner.store') }}" method="post"  enctype="multipart/form-data">
                     @csrf
-                    <input type="text" name="id" value="" />
+                    <div class="d-grid mt-3">
+                        <textarea name="message" class="form-control" style="height: 120px"></textarea>
+                    </div>
+                        <div class="d-grid mt-3">
+                        <input type="file" class="form-control" name="img" value="" />
+                    </div>
                     <div class="modal-footer">
-                        <button type="submit" form="friend-form" class="btn btn-primary">
+                        <button type="submit" form="branner-form" class="btn btn-primary">
                             Sure
                         </button>
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
@@ -58,7 +69,7 @@
         <div class="row">
             <div class="col-3">
                 <a href="" data-bs-toggle="modal" data-bs-target="#uploadProfile">
-                    <img src="http://localhost:8000/public/Image/202304290804V_logo.png" alt=""
+                    <img src="{{ asset('storage/Image/profile/'.$name.'/'.$profile->img) }}" alt=""
                         style="border: 5px solid #FFFFFF; border-radius: 50%; margin-top: -50px; margin-left: 50px;"
                         width="200px" height="200px">
                 </a>
@@ -94,11 +105,17 @@
                                 Would you like Upload Your Profile ?
                             </p>
                         </div>
-                        <form id="friend-form" action="{{ route('friend.store') }}" method="POST">
+                        <form id="profile-form" action="{{ route('profile.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
-                            <input type="text" name="id" value="" />
+                            <div class="d-grid mt-3">
+                            <textarea name="message" class="form-control" style="height: 120px"></textarea>
+                        </div>
+                            <div class="d-grid mt-3">
+                            <input type="file" class="form-control" name="img" value="" />
+                        </div>
+                           
                             <div class="modal-footer">
-                                <button type="submit" form="friend-form" class="btn btn-primary">
+                                <button type="submit" form="profile-form" class="btn btn-primary">
                                     Sure
                                 </button>
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
@@ -141,22 +158,28 @@
     <!-- End Header -->
     <!-- Profile -->
     <div class="row">
-        <div class="col">
+        <div class="col" style="font-size: 18px;">
+           
             <h3>Profile</h3>
-            <ul>
-                <li>
-                    A
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 p-2">
+                <li class="name item">
+                 <i class="bi bi-mortarboard me-3"></i><span>trantechnology</span> 
                 </li>
                 <li>
-                    B
+                    <i class="bi bi-house-door me-3"></i><span>Rama2,Bangkok</span> 
                 </li>
                 <li>
-                    C
+                    <i class="bi bi-heart me-3"></i><span>Single</span> 
                 </li>
             </ul>
+            <div class="d-grid gap-2">
+                <button class="btn btn-outline-secondary">Edit Personal Profile</button>
+            </div>
+            <hr>
             <h3>Picture</h3>
             ....
             ....
+            <hr>
             <h3>Friend</h3>
             ....
             ....

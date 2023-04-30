@@ -11,7 +11,7 @@
                 </li>
                 <hr />
                 <li class="nav-item">
-                    <a href="/profile" class="nav-link">
+                    <a href="{{route('profile.index')}}" class="nav-link">
                         <i class="bi bi-file"></i>
                         <strong class="p-2">Profile</strong>
                     </a>
@@ -32,7 +32,7 @@
                     <a href="{{route('friend.index')}}" class="nav-link d-flex align-items-center">
                         <i class="bi bi-person" style="font-size: 1.25rem;"></i>
                         <strong class="p-2">Friend </strong>
-                        <span class="badge rounded-pill bg-danger">99+</span>
+                        <span class="badge rounded-pill bg-danger">{{$friendReq->count()}}</span>
                     </a>
                 </li>
                 <hr />

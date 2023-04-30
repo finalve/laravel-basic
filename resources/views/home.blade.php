@@ -65,15 +65,14 @@
                                 {{$user->name}} to Friend?
                             </p>
                         </div>
-                        <form id="friend-form" action="{{ route('friend.store') }}" method="post" enctype="multipart/form-data">
+                        <form id="friend-form{{$user->id}}" action="{{ route('friend.store') }}" method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="d-grid mt-3">
-                                <input type="text" name="userId" value="{{$user->id}}">
-                                <textarea name="message" class="form-control" style="height: 120px"></textarea>
+                                <input hidden type="text" name="id" value="{{$user->id}}">
                             </div>
                         </form>
                         <div class="modal-footer">
-                            <button type="submit" form="friend-form" class="btn btn-primary">
+                            <button type="submit" form="friend-form{{$user->id}}" class="btn btn-primary">
                                 Sure
                             </button>
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
@@ -91,7 +90,6 @@
 <div class="mt-5">
     <strong>Friend</strong>
     <hr />
-    @if($friendUsers)
     @foreach($friendUsers as $friend)
     <div class="row mb-2">
         <div class="col-2">
@@ -106,14 +104,12 @@
     </div>
 
     @endforeach
-    @endif
 </div>
 
 <div class="mt-5">
     <strong>Pending</strong>
     <hr />
-    @if($friendReq)
-    @foreach($friendReq as $friend)
+    @foreach($friendPending as $friend)
     <div class="row mb-2">
         <div class="col-2">
             <img src="" alt="" width="25px" height="25px" style="
@@ -127,7 +123,6 @@
     </div>
 
     @endforeach
-    @endif
 </div>
 @endsection
 
