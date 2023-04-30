@@ -45,8 +45,9 @@ class FriendsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $user)
-    {
+    {  return dd($user);
         $friend = User::findOrFail($user->id);
+      
         auth()->user()->addfriends()->attach([$friend->id]);
 
         return back()->with('success', 'Friend added successfully');

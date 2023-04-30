@@ -21,7 +21,7 @@
                 <div class="card-header">{{ __('Change Password') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" id="update" action="{{ route('password.update') }}">
+                    <form method="POST" id="update" action="{{ route('pwd.update') }}">
                         @csrf
                         @method('PUT')
                         <div class="form-group row mb-3">

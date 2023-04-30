@@ -22,6 +22,7 @@
     <div id="app">
         <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-white shadow-sm">
             <div class="container ">
+                <img src="" alt="">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config("app.name", "Laravel") }}
                 </a>
@@ -53,9 +54,9 @@
                                 data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ Auth::user()->name }}
                             </a>
-                        
+
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('password.edit') }}">
+                                <a class="dropdown-item" href="{{ route('pwd.edit') }}">
                                     {{ __("Setting") }}
                                 </a>
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
@@ -75,7 +76,9 @@
         </nav>
 
         <main class="py-4">
-            @yield('content')
+                @yield('header')
+                @yield('content')
+          
         </main>
     </div>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>

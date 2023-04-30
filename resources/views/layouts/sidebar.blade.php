@@ -11,9 +11,9 @@
                 </li>
                 <hr />
                 <li class="nav-item">
-                    <a href="" class="nav-link">
+                    <a href="/profile" class="nav-link">
                         <i class="bi bi-file"></i>
-                        <strong class="p-2">Pages</strong>
+                        <strong class="p-2">Profile</strong>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -37,7 +37,7 @@
                 </li>
                 <hr />
                 <li class="nav-item">
-                    <a href="{{ route('password.edit') }}" class="nav-link">
+                    <a href="{{ route('pwd.edit') }}" class="nav-link">
                         <i class="bi bi-gear"></i>
                         <strong class="p-2">Settings</strong>
                     </a>
@@ -45,7 +45,7 @@
                 <li class="nav-item">
                     <a href="" class="nav-link">
                         <i class="bi bi-person-badge"></i>
-                        <strong class="p-2">Profile</strong>
+                        <strong class="p-2">Logout</strong>
                     </a>
                 </li>
             </ul>

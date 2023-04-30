@@ -46,7 +46,7 @@ class PostsController extends Controller
       
         $request->validate([
             'message' => 'required',
-            'img' => 'nullable|file|mimes:jpeg,png,gif,svg|max:2048|dimensions:max_width=5000,max_height=5000',
+            'img' => 'nullable|image|mimes:jpeg,png,gif,svg|max:2048|dimensions:max_width=5000,max_height=5000',
 
         ]);
 
