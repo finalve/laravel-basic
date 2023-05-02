@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\ChangePasswordController;
 use App\Http\Controllers\BrannersController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\FriendsController;
+use App\Http\Controllers\PersonalController;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\ProfileUploadController;
 
@@ -31,6 +32,7 @@ Auth::routes();
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/edit', [ChangePasswordController::class, 'edit'])->name('pwd.edit');
 // Route::get('/profile',[profileController::class,'index'])->name('profile');
+Route::resource('personal', PersonalController::class);
 Route::resource('branner', BrannersController::class);
 Route::resource('profile', ProfileUploadController::class);
 Route::resource('posts',PostsController::class);

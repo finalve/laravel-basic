@@ -4,12 +4,12 @@
     <!-- Logo Banner -->
     <div style="height: 400px;">
         <a href="" data-bs-toggle="modal" data-bs-target="#uploadBanner">
-            @if($branner !== null)
+            @if(isset($branner->img))
             <img src="{{ asset('storage/Image/branner/'.$name.'/'.$branner->img) }}" alt="" width="100%" height="100%"
                 style="margin-top: -25px;">
               
                 @else
-                <img src="" alt="" width="100%" height="100%"
+                <img src="{{ asset('storage/Image/branner/default.png') }}" alt="" width="100%" height="100%"
                 style="margin-top: -25px;">
                 @endif
         </a>
@@ -69,13 +69,20 @@
         <div class="row">
             <div class="col-3">
                 <a href="" data-bs-toggle="modal" data-bs-target="#uploadProfile">
+                    @if(isset($profile->img))
                     <img src="{{ asset('storage/Image/profile/'.$name.'/'.$profile->img) }}" alt=""
                         style="border: 5px solid #FFFFFF; border-radius: 50%; margin-top: -50px; margin-left: 50px;"
                         width="200px" height="200px">
+                        @else
+                        
+                        <img src="{{ asset('storage/Image/profile/default.png') }}" alt=""
+                        style="border: 5px solid #FFFFFF; border-radius: 50%; margin-top: -50px; margin-left: 50px;"
+                        width="200px" height="200px">
+                        @endif
                 </a>
             </div>
             <div class="col">
-                <h1>Waleesin</h1>
+                <h1>{{$name}}</h1>
             </div>
             <!-- Modal -->
             <div class="modal" id="uploadProfile" tabindex="-1">
@@ -163,17 +170,17 @@
             <h3>Profile</h3>
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 p-2">
                 <li class="name item">
-                 <i class="bi bi-mortarboard me-3"></i><span>trantechnology</span> 
+                 <i class="bi bi-mortarboard me-3"></i><span>{{isset($personal) ? $personal->school:''}}</span> 
                 </li>
+                <li0>
+                    <i class="bi bi-house-door me-3"></i><span>{{isset($personal) ? $personal->location:''}}</span> 
+                </li0>
                 <li>
-                    <i class="bi bi-house-door me-3"></i><span>Rama2,Bangkok</span> 
-                </li>
-                <li>
-                    <i class="bi bi-heart me-3"></i><span>Single</span> 
+                    <i class="bi bi-heart me-3"></i><span>{{isset($personal) ? $personal->relationship:''}}</span> 
                 </li>
             </ul>
             <div class="d-grid gap-2">
-                <button class="btn btn-outline-secondary">Edit Personal Profile</button>
+                <a class="btn btn-outline-secondary"  data-bs-toggle="modal" data-bs-target="#editpersonal">Add Personal Profile</a>
             </div>
             <hr>
             <h3>Picture</h3>
@@ -184,6 +191,48 @@
             ....
             ....
         </div>
+          <!-- Modal -->
+    <div class="modal" id="editpersonal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        Edit Personal Profile
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="personal-form" action="{{ route('personal.store') }}" method="post"  enctype="multipart/form-data">
+                        @csrf
+                        <div class="input-group flex-nowrap mb-2">
+                            <span class="input-group-text" id="addon-wrapping"> <i class="bi bi-mortarboard"></i></span>
+                            <input type="text" class="form-control" placeholder="School" name="school" aria-label="School" aria-describedby="addon-wrapping">
+                          </div>
+                          <div class="input-group flex-nowrap mb-2">
+                            <span class="input-group-text" id="addon-wrapping"> <i class="bi bi-house-door"></i></span>
+                            <input type="text" class="form-control" placeholder="Location" name="location" aria-label="Location" aria-describedby="addon-wrapping">
+                          </div>
+
+                          <div class="input-group flex-nowrap mb-2">
+                            <span class="input-group-text" id="addon-wrapping"> <i class="bi bi-heart"></i></span>
+                            <input type="text" class="form-control" placeholder="Relationship" name="relationship" aria-label="Relationship" aria-describedby="addon-wrapping">
+                          </div>
+                    </form>
+                </div>
+                    <div class="modal-footer">
+                        <button type="submit" form="personal-form" class="btn btn-primary">
+                            Sure
+                        </button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                            Close
+                        </button>
+                    </div>
+                
+            </div>
+        </div>
+    </div>
+    <!-- End Modal -->
+
         <!-- End Profile -->
         <!-- Content -->
         <div class="col">

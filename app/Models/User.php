@@ -17,6 +17,16 @@ class User extends Authenticatable
         return $this->hasMany(Posts::class);
     }
 
+    public function profile()
+    {
+        return $this->hasOne(ProfileUpload::class)->latest();
+    }
+
+    public function personal()
+    {
+        return $this->hasOne(Personal::class);
+    }
+
     public function friends()
     {
         return $this->belongsToMany(User::class,'friends','friend_id','user_id')->withPivot('friend_id','status')->withTimestamps();

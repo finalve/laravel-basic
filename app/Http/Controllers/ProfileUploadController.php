@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Branners;
+use App\Models\Personal;
 use App\Models\Posts;
 use App\Models\ProfileUpload;
 use Illuminate\Http\Request;
@@ -27,7 +28,8 @@ class ProfileUploadController extends Controller
         $posts = Posts::Where('user_id', $loggedInUserId)->latest()->get();
         $profile = ProfileUpload::Where('user_id',$loggedInUserId)->latest()->first();
         $branner = Branners::Where('user_id',$loggedInUserId)->latest()->first();
-        return view('subpages.profile',compact('posts','name','profile','branner'));
+        $personal = Personal::Where('user_id',$loggedInUserId)->latest()->first();
+        return view('subpages.profile',compact('posts','name','profile','branner','personal'));
     }
 
     /**

@@ -27,10 +27,18 @@
             <div class="col-4">
                 <div class="row">
                     <div class="col-md-2">
-                        <img src="" alt="" width="50px" height="50px" style="
+                        
+                       @if(isset($post->user->profile->img))
+                        <img src="{{ asset('storage/Image/profile/'.$post->user->name.'/'.$post->user->profile->img) }}" alt="" width="50px" height="50px" style="
                                 border-radius: 50%;
                                 border: 2px solid #46a5ff;
                             " />
+                               @else 
+                               <img src="{{ asset('storage/Image/profile/default.png') }}" alt="" width="50px" height="50px" style="
+                               border-radius: 50%;
+                               border: 2px solid #46a5ff;
+                           " />
+                            @endif
                     </div>
                     <div class="col-md" style="margin-left: 1rem;">
                         <strong class=""> {{$post->user->name}} </strong>
@@ -48,9 +56,10 @@
         <div>
             <div class="row mb-3 mx-3">
                 {{$post->message}}
+              
             </div>
           
-            @if($post->img!==null)
+            @if(isset($post->img))
             <div class="row mb-3">
                 <img src="{{ url('public/Image/'.$post->img) }}" alt="">
             </div>
@@ -79,13 +88,22 @@
         <div class="card-title">
             <div class="row p-2">
                 <div class="col-1">
-                    <img src="" alt="" width="50px" height="50px" style="
+                    @if(isset($comment->user->profile->img))
+                    <img src="{{ asset('storage/Image/profile/'.$comment->user->name.'/'.$comment->user->profile->img) }}" alt="" width="50px" height="50px" style="
                             border-radius: 50%;
                             border: 2px solid #46a5ff;
                         " />
+                        @else 
+                        <img src="{{ asset('storage/Image/profile/default.png') }}" alt="" width="50px" height="50px" style="
+                        border-radius: 50%;
+                        border: 2px solid #46a5ff;
+                    " />
+              @endif
+                    
                 </div>
                 <div class="col-md" style="margin-left: 1rem;">
                     <strong class=""> {{$comment->user->name}} </strong>
+                 
                     <p style="font-size: 10px">
                         {{$comment->created_at}}
 
